@@ -1,4 +1,4 @@
-package com.example.demo.querytypes;
+package com.example.demo;
 
 import com.example.demo.Student;
 import com.example.demo.StudentRepository;

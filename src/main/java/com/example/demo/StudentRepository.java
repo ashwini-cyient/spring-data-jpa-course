@@ -30,6 +30,12 @@ public interface StudentRepository extends JpaRepository<Student, Long> {
     @Modifying
     @Query("DELETE FROM Student s WHERE s.id = :id")
     int deleteStudentById(@Param("id")Long id);
+    List<Student> findByOrderByFirstNameAsc();
+
+    @Query("SELECT s FROM Student s ORDER BY s.firstName ASC")
+    List<Student> findByOrderByFirstNameAscJPQL();
+
+
 
 
 

@@ -1,8 +1,5 @@
 package com.example.demo;
 
-import com.example.demo.faker.FakerTester;
-import com.example.demo.querytypes.QueryTypeTester;
-import com.github.javafaker.Faker;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -21,8 +18,18 @@ public class Application {
            /* QueryTypeTester tester = new QueryTypeTester();
             tester.startTesting(studentRepository);*/
 
-            FakerTester ft = new FakerTester();
-            ft.registerStudentsWithFaker(studentRepository);
+            StudentsService ft = new StudentsService(studentRepository);
+            System.out.println("------------------Register Students-------------------------------");
+            ft.registerStudentsWithFaker();
+            System.out.println("------------------findStudentsOrderByFirstNameAsc-------------------------------");
+            ft.findStudentsOrderByFirstNameAsc();
+            System.out.println("------------------findStudentsOrderByFirstNameAscJPQL-------------------------------");
+            ft.findStudentsOrderByFirstNameAscJPQL();
+            System.out.println("------------------findStudentsOrderByFirstNameAscUsingSortObject-------------------------------");
+            ft.findStudentsOrderByFirstNameAscUsingSortObject();
+            System.out.println("------------------findStudentsOrderByFirstNameAscUsingSortObjectAndPagination-------------------------------");
+            ft.findStudentsOrderByFirstNameAscUsingSortObjectAndPagination();
+
 
 
 
