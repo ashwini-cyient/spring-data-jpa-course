@@ -19,9 +19,9 @@ public class Student {
             generator = "student_sequence")
     @Column(name = "id", updatable = false)
     private Long id;
-    @Column(name = "firstName", nullable = false, columnDefinition = "TEXT")
+    @Column(name = "first_name", nullable = false, columnDefinition = "TEXT")
     private String firstName;
-    @Column(name = "lastName", nullable = false, columnDefinition = "TEXT")
+    @Column(name = "last_name", nullable = false, columnDefinition = "TEXT")
     private String lastName;
     @Column(name = "email", nullable = false, columnDefinition = "TEXT", unique = true)
     private String email;
@@ -32,8 +32,7 @@ public class Student {
 
     }
 
-    public Student(Long id, String firstName, String lastName, String email, Integer age) {
-        this.id = id;
+    public Student(String firstName, String lastName, String email, Integer age) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
