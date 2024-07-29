@@ -1,7 +1,6 @@
 package com.example.demo;
 
-import com.example.demo.Student;
-import com.example.demo.StudentRepository;
+import com.example.demo.entitiy.Student;
 
 import java.util.List;
 

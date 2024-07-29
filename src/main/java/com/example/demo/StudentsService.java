@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import com.example.demo.entitiy.Student;
 import com.github.javafaker.Faker;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;

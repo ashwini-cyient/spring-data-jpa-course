@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.entitiy;
 
 import jakarta.persistence.*;
 import org.w3c.dom.Text;
