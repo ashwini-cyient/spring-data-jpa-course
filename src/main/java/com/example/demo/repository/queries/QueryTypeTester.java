@@ -1,6 +1,7 @@
-package com.example.demo;
+package com.example.demo.repository.queries;
 
 import com.example.demo.entitiy.Student;
+import com.example.demo.repository.StudentRepository;
 
 import java.util.List;
 

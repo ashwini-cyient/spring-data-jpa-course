@@ -1,6 +1,6 @@
-package com.example.demo;
+package com.example.demo.repository.queries;
 
-import com.example.demo.StudentRepository;
+import com.example.demo.repository.StudentRepository;
 
 public class CustomQueries {
     public void customQueries(StudentRepository studentRepository) {
