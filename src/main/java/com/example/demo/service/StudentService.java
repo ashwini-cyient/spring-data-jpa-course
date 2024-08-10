@@ -17,8 +17,15 @@ public class StudentService {
 
     }
 
-    public void addStudent(Student student){
-        this._studentRepository.save(student);
+    public Long addStudent(Student student){
+        Long id = -1l;
+        try {
+            Student stud = this._studentRepository.save(student);
+            id = stud.getId();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        return id;
     }
 
     public Student getStudentById(Long id){

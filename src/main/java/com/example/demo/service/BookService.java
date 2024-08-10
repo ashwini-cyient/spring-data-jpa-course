@@ -13,10 +13,10 @@ public class BookService {
         this._bookRepository = _bookRepository;
     }
 
-    public void addBook(Book book){
+    public void addBook(Book book) {
     }
 
-    public Student getBookById(Long id){
+    public Student getBookById(Long id) {
         return null;
     }
 }

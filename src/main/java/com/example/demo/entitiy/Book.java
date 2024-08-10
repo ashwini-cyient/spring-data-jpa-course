@@ -25,6 +25,11 @@ public class Book {
     public Book() {
     }
 
+    public Book(String bookName, LocalDateTime createdAt) {
+        this.bookName = bookName;
+        this.createdAt = createdAt;
+    }
+
     public LocalDateTime getCreatedAt() {
         return createdAt;
     }

@@ -16,14 +16,14 @@ public class LibraryCardService {
     }
 
 
-
-    public void issueLibraryCard(Student student) {
-        if(student == null){
-            return;
+    public LibraryCard issueLibraryCard(Student student) {
+        LibraryCard libraryCard = null;
+        if (student != null) {
+            libraryCard = new LibraryCard(UUID.randomUUID().toString(), student);
+            this._libraryCardRepository.save(libraryCard);
         }
-        LibraryCard libraryCard = new LibraryCard(UUID.randomUUID().toString(), student);
-        this._libraryCardRepository.save(libraryCard);
-        System.out.println("---id card issued-----"+ libraryCard);
+
+        return libraryCard;
 
     }
 
@@ -33,7 +33,7 @@ public class LibraryCardService {
 
     }
 
-    public void findStudentIdCardById(Long id){
+    public void findStudentIdCardById(Long id) {
         this._libraryCardRepository.findById(id).ifPresent(System.out::println);
 
     }
@@ -44,12 +44,6 @@ public class LibraryCardService {
     getIdCardDetails(Long idCardId)
     getAllIdCards()
     replaceLostIdCard(Student student)*/
-
-
-
-
-
-
 
 
 }
