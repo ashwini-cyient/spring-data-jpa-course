@@ -2,35 +2,31 @@ package com.example.demo.entitiy;
 
 import jakarta.persistence.*;
 
-@Entity(name = "StudentIdCard")
-@Table(name = "student_id_card", uniqueConstraints = {
+@Entity(name = "LibraryCard")
+@Table(name = "library_card", uniqueConstraints = {
         @UniqueConstraint(name = "student_card_number_unique", columnNames = "card_number")
 })
-public class StudentIdCard {
+public class LibraryCard {
     @Id
-    @SequenceGenerator(name = "student_id_card_sequence",
-            sequenceName = "student_id_card_sequence",
-            allocationSize = 1
-    )
-    @GeneratedValue(strategy = GenerationType.SEQUENCE,
-            generator = "student_id_card_sequence")
+    @SequenceGenerator(name = "library_card_sequence",sequenceName = "library_card_sequence",allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "library_card_sequence")
     @Column(name = "id", updatable = false)
     private Long id;
     @Column(name = "card_number", nullable = false, columnDefinition = "TEXT", unique = true, length = 15)
     private String cardNumber;
 
-    @OneToOne(cascade = CascadeType.ALL, fetch =FetchType.EAGER )
-    @JoinColumn(name = "student_id", referencedColumnName = "id" , foreignKey = @ForeignKey(name = "student_id_foreign_key"))
+    @OneToOne()
+    @JoinColumn(name = "student_id", referencedColumnName = "id" , foreignKey = @ForeignKey(name = "library_card_student_id_fk"))
     private Student student;
 
-    public StudentIdCard() {
+    public LibraryCard() {
     }
 
-    public StudentIdCard(String cardNumber) {
+    public LibraryCard(String cardNumber) {
         this.cardNumber = cardNumber;
     }
 
-    public StudentIdCard(String cardNumber, Student student) {
+    public LibraryCard(String cardNumber, Student student) {
         this.cardNumber = cardNumber;
         this.student = student;
     }
@@ -53,7 +49,7 @@ public class StudentIdCard {
 
     @Override
     public String toString() {
-        return "StudentIdCard{" +
+        return "LibraryCard{" +
                 "id=" + id +
                 ", cardNumber='" + cardNumber + '\'' +
                 ", student=" + student +

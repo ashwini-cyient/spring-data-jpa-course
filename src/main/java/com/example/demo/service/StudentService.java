@@ -1,9 +1,7 @@
 package com.example.demo.service;
 
 import com.example.demo.entitiy.Student;
-import com.example.demo.entitiy.StudentIdCard;
 import com.example.demo.repository.StudentRepository;
-import com.github.javafaker.Faker;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
@@ -13,20 +11,19 @@ import java.util.Optional;
 
 public class StudentService {
     private final StudentRepository _studentRepository;
-    private FakerUtil _fakerUtil;
 
-    public StudentService(StudentRepository studentRepository, FakerUtil fakerUtil) {
+    public StudentService(StudentRepository studentRepository) {
         this._studentRepository = studentRepository;
-        this._fakerUtil = fakerUtil;
 
     }
 
-    public void registerStudentsWithFaker() {
-        for (int i = 0; i < 30; i++) {
-            this._studentRepository.save(_fakerUtil.createFakeStudent());
-        }
+    public void addStudent(Student student){
+        this._studentRepository.save(student);
+    }
 
-
+    public Student getStudentById(Long id){
+        Optional<Student> student = this._studentRepository.findById(id);
+        return student.orElse(null);
     }
 
     public void findAllStudents() {
@@ -59,11 +56,16 @@ public class StudentService {
 
     }
 
-    public void findStudentById(Long id){
-        this._studentRepository.findById(id).ifPresent(System.out::println);
 
 
-    }
+    /*addStudent(Student student)
+    updateStudent(Student student)
+    removeStudent(Long studentId)
+    getStudentById(Long studentId)
+    getAllStudents()
+    assignBookToStudent(Student student, Book book)
+    unassignBookFromStudent(Student student, Book book)
+*/
 
 
 }

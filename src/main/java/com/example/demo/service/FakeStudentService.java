@@ -3,9 +3,9 @@ package com.example.demo.service;
 import com.example.demo.entitiy.Student;
 import com.github.javafaker.Faker;
 
-public class FakerUtil {
+public class FakeStudentService {
     Faker faker;
-    public FakerUtil() {
+    public FakeStudentService() {
         faker = new Faker();
     }
 

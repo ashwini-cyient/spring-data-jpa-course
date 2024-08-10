@@ -1,9 +1,9 @@
 package com.example.demo.entitiy;
 
 import jakarta.persistence.*;
-import org.w3c.dom.Text;
 
-import javax.sound.midi.Sequence;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity(name = "Student")
 @Table(name = "student", uniqueConstraints = {
@@ -11,12 +11,8 @@ import javax.sound.midi.Sequence;
 })
 public class Student {
     @Id
-    @SequenceGenerator(name = "student_sequence",
-            sequenceName = "student_sequence",
-            allocationSize = 1
-    )
-    @GeneratedValue(strategy = GenerationType.SEQUENCE,
-            generator = "student_sequence")
+    @SequenceGenerator(name = "student_sequence",sequenceName = "student_sequence",allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "student_sequence")
     @Column(name = "id", updatable = false)
     private Long id;
     @Column(name = "first_name", nullable = false, columnDefinition = "TEXT")
@@ -28,7 +24,9 @@ public class Student {
     @Column(name = "age", nullable = false)
     private Integer age;
     @OneToOne(mappedBy = "student", orphanRemoval = true)
-    private StudentIdCard studentIdCard;
+    private LibraryCard libraryCard;
+    @OneToMany(mappedBy = "student", orphanRemoval = true, cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+    private List<Book> books = new ArrayList<>();
 
     public Student() {
 
@@ -79,6 +77,20 @@ public class Student {
 
     public void setAge(Integer age) {
         this.age = age;
+    }
+
+    public void assignBook(Book book){
+        if(!this.books.contains(book)){
+            this.books.add(book);
+            book.setStudent(this);
+        }
+    }
+
+    public void deAssignBook(Book book){
+        if(this.books.contains(book)){
+            this.books.remove(book);
+            book.setStudent(null);
+        }
     }
 
     @Override
